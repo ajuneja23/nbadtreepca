@@ -32,10 +32,10 @@ principalComponents = pca.fit_transform(x)
 
 principalComponentDataFrame=pd.DataFrame(principalComponents,columns=['PC 1','PC 2','PC 3'])
 #print(principalComponentDataFrame)
-x_train=principalComponentDataFrame.head(math.floor(-0.2*(principalComponentDataFrame.shape[0]))).to_numpy
-x_test=principalComponentDataFrame.tail(math.ceil(0.2*(principalComponentDataFrame.shape[0]))).to_numpy
-y_train=y.head(math.floor(-0.2*y.shape[0])).to_numpy
-y_test=y.tail(math.ceil(0.2*y.shape[0])).to_numpy
+x_train=principalComponentDataFrame.head(math.floor(-0.2*(principalComponentDataFrame.shape[0]))).values.tolist()
+x_test=principalComponentDataFrame.tail(math.ceil(0.2*(principalComponentDataFrame.shape[0]))).values.tolist()
+y_train=y.head(math.floor(-0.2*y.shape[0])).values.tolist()
+y_test=y.tail(math.ceil(0.2*y.shape[0])).values.tolist()
 
 regressor=DecisionTreeRegressor(random_state=0)
 regressor.fit(x_train,y_train)
